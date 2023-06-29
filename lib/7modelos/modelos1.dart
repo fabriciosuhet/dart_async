@@ -1,12 +1,14 @@
 // ignore_for_file: avoid_print
 
+import 'package:dart_async/7modelos/user.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert' as convert;
+import 'dart:convert';
 
 import 'cidade.dart';
 
 void main() {
-  buscarCEP();
+  // buscarCEP();
+  buscarUser();
 }
 
 Future<void> buscarCEP() async {
@@ -30,5 +32,15 @@ Future<void> buscarCEP() async {
     print(cidade.toMap());
     print(cidade.toJson());
 
+  }
+}
+
+Future<void> buscarUser() async {
+  var url = 'https://5f7cba02834b5c0016b058aa.mockapi.io/api/users/1';
+
+  var response = await http.get(Uri.parse(url));
+  if (response.statusCode == 200) {
+    var user = User.fromJson(response.body);
+    print(user);
   }
 }
