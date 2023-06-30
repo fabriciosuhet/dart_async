@@ -5,11 +5,11 @@ Future<void> main() async {
   const interval = Duration(seconds: 1);
   var stream = Stream<int>.periodic(interval, callback);
 
-  stream = stream.take(5);
+  stream = stream.take(10);
+  stream.listen((numero) { 
+    print('Listen Value: $numero');
+  });
   
-  final data = await stream.toList();
-
-  print(data);
   print('FIM');
 
 }
