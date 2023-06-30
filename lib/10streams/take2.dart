@@ -6,8 +6,8 @@ Future<void> main() async {
   var stream = Stream<int>.periodic(interval, callback);
 
   stream = stream.take(5);
-
-// Await for
+  
+// Await for 
   await for (var i in stream) {
     print(i);
   }
